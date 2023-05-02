@@ -25,7 +25,7 @@ namespace webAPI.Controllers
         {
             Rpg result = null;
             
-            result = _services Get(id);
+            result = _services.Get(id);
             
             return result;
         }

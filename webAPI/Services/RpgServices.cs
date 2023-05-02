@@ -4,7 +4,7 @@ public class RpgServices
 {
     public static IList<Rpg> database;
 
-    public RpgServices()
+    static RpgServices()
     {
         database = new List<Rpg>();
         database.Add(item:new Rpg(){ id = 0, name = "BOSS", lv = 999 });
