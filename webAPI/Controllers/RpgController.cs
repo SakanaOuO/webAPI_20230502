@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using webAPI.Services;
 
 namespace webAPI.Controllers
 {
@@ -11,11 +12,29 @@ namespace webAPI.Controllers
     [ApiController]
     public class RpgController : ControllerBase
     {
+        private RpgServices _services;
+
+        public RpgController()
+        {
+            _services = new RpgServices();
+        }
+
         [HttpGet]
-        public Rpg Get()
+        [Route(template:"{id}")]
+        public Rpg Get(int id)
         {
             Rpg result = null;
-            result = new Rpg() { id = 0, name = "BOSS", lv = 999 };
+            
+            result = _services Get(id);
+            
+            return result;
+        }
+
+        [HttpPost]
+        public Rpg Post(Rpg rpg)
+        {
+            Rpg result = null;
+            result = _services.Create(rpg);
             return result;
         }
     }
